@@ -1,16 +1,7 @@
 # import requests
 # import pandas as pd
 # from datetime import datetime, timedelta
-# import timecko/20100101 Firefox/121.0'
-#         ]
-        
-#     def add_delay(self):
-#         """Add random delay between requests"""
-#         delay = random.uniform(self.min_delay, self.max_delay)
-#         print(f"⏳ Waiting {delay:.1f}s to avoid rate limiting...")
-#         time.sleep(delay)
-    
-#     def scrape_remoteok(self, keywords=['data engineer', 'python', 'sql', 'analyst', 'scientist']):
+# import timecko/20100l', 'analyst', 'scientist']):
 #         """Scrape jobs from RemoteOK API with improved filtering"""
 #         jobs = []
         
