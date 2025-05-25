@@ -3,12 +3,7 @@
 # from datetime import datetime, timedelta
 # import time
 # import random
-# import json
-# from typing import List, Dict, Any
-
-# class JobScraper:
-#     def __init__(self):
-#         # Don't set up a persistent session with encoding issues
+# import json encoding issues
 #         self.min_delay = 3
 #         self.max_delay = 7
     
