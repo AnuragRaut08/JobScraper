@@ -136,29 +136,7 @@
 #         print(f"Headers: {dict(response.headers)}")
 #         print(f"Content Length: {len(response.content)}")
 #         print(f"Content Type: {response.headers.get('Content-Type')}")
-        
-#         # Show first 1000 characters
-#         print(f"\nFirst 1000 characters of response:")
-#         print("-" * 50)
-#         print(response.text[:1000])
-#         print("-" * 50)
-        
-#         # Try to parse as JSON
-#         try:
-#             data = response.json()
-#             print(f"✅ Successfully parsed JSON with {len(data)} items")
-#             if len(data) > 1:
-#                 print(f"Sample job keys: {list(data[1].keys()) if isinstance(data[1], dict) else 'Not a dict'}")
-#         except json.JSONDecodeError as e:
-#             print(f"❌ JSON parsing failed: {e}")
-            
-#             # Check if it's HTML
-#             if response.text.strip().startswith('<'):
-#                 print("⚠️  Response appears to be HTML (possibly rate-limited)")
-#             else:
-#                 print("⚠️  Response is not JSON and not HTML")
-                
-#     except Exception as e:
+
 #         print(f"❌ Request failed: {e}")
 
 # def main():
