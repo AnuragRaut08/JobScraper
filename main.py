@@ -120,51 +120,7 @@
 #             print(f"❌ Error with alternative sources: {e}")
         
 #         return jobs
-    
-#     def scrape_all_sources(self):
-#         """Scrape from all available sources"""
-#         all_jobs = []
-        
-#         print("🚀 Starting comprehensive job scraping...")
-        
-#         # Scrape RemoteOK with improved logic
-#         print("\n" + "="*50)
-#         remoteok_jobs = self.scrape_remoteok()
-#         all_jobs.extend(remoteok_jobs)
-        
-#         self.add_delay()
-        
-#         # Scrape USAJobs
-#         print("\n" + "="*50)
-#         usajobs_jobs = self.scrape_usajobs()
-#         all_jobs.extend(usajobs_jobs)
-        
-#         self.add_delay()
-        
-#         # Try alternative sources
-#         print("\n" + "="*50)
-#         alt_jobs = self.scrape_alternative_sources()
-#         all_jobs.extend(alt_jobs)
-        
-#         print(f"\n🎯 Total jobs scraped: {len(all_jobs)}")
-        
-#         if all_jobs:
-#             # Remove duplicates based on company + title
-#             df = pd.DataFrame(all_jobs)
-#             initial_count = len(df)
-#             df = df.drop_duplicates(subset=['company_name', 'job_title'], keep='first')
-#             final_count = len(df)
-            
-#             if initial_count != final_count:
-#                 print(f"🔄 Removed {initial_count - final_count} duplicate jobs")
-            
-#             return df
-#         else:
-#             return pd.DataFrame()
 
-# def test_individual_scrapers():
-#     """Test each scraper individually for debugging"""
-#     scraper = JobScraper()
     
 #     print("🧪 Testing RemoteOK scraper...")
 #     remoteok_jobs = scraper.scrape_remoteok()
