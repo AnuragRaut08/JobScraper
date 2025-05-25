@@ -1,17 +1,5 @@
 
         
-#         try:
-#                 'User-Agent': 'your-email@example.com',  # Replace with your email
-#                 'Authorization-Key': 'YOUR_API_KEY_HERE'  # You need to register for an API key
-#             })
-            
-#             for keyword in keywords:
-#                 try:
-#                     params = {
-#                         'Keyword': keyword,
-#                         'ResultsPerPage': 25,
-#                         'WhoMayApply': 'All',
-#                         'DatePosted': 7  # Last 7 days
 #                     }
                     
 #                     response = session.get(
