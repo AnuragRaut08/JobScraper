@@ -1,19 +1,7 @@
 # import requests
 # import pandas as pd
 # from datetime import datetime, timedelta
-# import time
-# import random
-# import json encoding issues
-#         self.min_delay = 3
-#         self.max_delay = 7
-    
-#     def create_session(self):
-#         """Create a fresh session for each request to avoid encoding issues"""
-#         session = requests.Session()
-#         user_agents = [
-#             'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-#             'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-#             'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/121.0'
+# import timecko/20100101 Firefox/121.0'
 #         ]
         
 #         session.headers.update({
