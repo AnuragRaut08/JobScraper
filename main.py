@@ -4,15 +4,6 @@
 # import timecko/20100101 Firefox/121.0'
 #         ]
         
-#         session.headers.update({
-#             'User-Agent': random.choice(user_agents),
-#             'Accept': 'application/json',
-#             'Accept-Language': 'en-US,en;q=0.9',
-#             'Cache-Control': 'no-cache'
-#         })
-        
-#         return session
-    
 #     def add_delay(self):
 #         """Add random delay between requests"""
 #         delay = random.uniform(self.min_delay, self.max_delay)
