@@ -1,14 +1,6 @@
 
         
 #         try:
-#             print("🔍 Fetching jobs from USAJobs...")
-            
-#             # Create fresh session
-#             session = self.create_session()
-            
-#             # USAJobs requires proper headers
-#             session.headers.update({
-#                 'Host': 'data.usajobs.gov',
 #                 'User-Agent': 'your-email@example.com',  # Replace with your email
 #                 'Authorization-Key': 'YOUR_API_KEY_HERE'  # You need to register for an API key
 #             })
