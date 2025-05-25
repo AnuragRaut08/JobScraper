@@ -1,21 +1,4 @@
 
-#                 tags = job_data.get('tags', [])
-                
-#                 # Convert tags to lowercase for matching
-#                 tag_text = ' '.join([str(tag).lower() for tag in tags if tag])
-                
-#                 # More comprehensive keyword matching
-#                 search_text = f"{position} {description} {tag_text}"
-                
-#             print(f"❌ Network error scraping RemoteOK: {e}")
-#         except Exception as e:
-#             print(f"❌ Unexpected error scraping RemoteOK: {e}")
-        
-#         return jobs
-    
-#     def scrape_usajobs(self, keywords=['Data Engineer', 'Data Analyst', 'Data Scientist']):
-#         """Scrape jobs from USAJobs API with proper authentication"""
-#         jobs = []
         
 #         try:
 #             print("🔍 Fetching jobs from USAJobs...")
