@@ -1,31 +1,3 @@
-# import pandas as pd
-
-# def filter_by_sponsorship(jobs_df, sponsor_csv="h1bcompanies_list.csv"):
-#     sponsors = pd.read_csv(sponsor_csv)
-
-#     # detect sponsor-name column
-#     matched_cols = [c for c in sponsors.columns if 'employer' in c.lower() or 'company' in c.lower()]
-#     if not matched_cols:
-#         raise ValueError("No suitable sponsor name column found.")
-#     sponsor_col = matched_cols[0]
-
-#     sponsor_names = sponsors[sponsor_col].str.lower().str.strip().unique()
-
-#     # detect company column in jobs_df
-#     job_cols = [c for c in jobs_df.columns if 'company' in c.lower()]
-#     if not job_cols:
-#         raise ValueError("No company column in jobs DataFrame.")
-#     jobs_df['Company Lower'] = jobs_df[job_cols[0]].str.lower().str.strip()
-
-#     filtered_df = (
-#         jobs_df[jobs_df['Company Lower'].isin(sponsor_names)]
-#         .drop(columns=['Company Lower'])
-#     )
-#     return filtered_df
-
-
-
-# utils/filters.py
 import pandas as pd
 from fuzzywuzzy import fuzz
 import re
