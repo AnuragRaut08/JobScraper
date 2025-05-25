@@ -1,18 +1,4 @@
 
-                
-#                 data = response.json()
-                
-#             except json.JSONDecodeError as e:
-#                 print(f"❌ Failed to parse RemoteOK JSON response: {e}")
-#                 print(f"❌ Response encoding: {response.encoding}")
-#                 print(f"❌ Response headers: {dict(response.headers)}")
-                
-#                 # Try manual decoding
-#                 try:
-#                     import gzip
-#                     if response.headers.get('Content-Encoding') == 'gzip':
-#                         print("🔧 Attempting manual gzip decoding...")
-# get('company', '')
 #                 tags = job_data.get('tags', [])
                 
 #                 # Convert tags to lowercase for matching
