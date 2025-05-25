@@ -37,28 +37,7 @@
 #                     import gzip
 #                     if response.headers.get('Content-Encoding') == 'gzip':
 #                         print("🔧 Attempting manual gzip decoding...")
-#                         decompressed = gzip.decompress(response.content)
-#                         data = json.loads(decompressed.decode('utf-8'))
-#                         print("✅ Manual gzip decoding successful!")
-#                     else:
-#                         print("❌ Not gzipped, unknown encoding issue")
-#                         return jobs
-#                 except Exception as decode_error:
-#                     print(f"❌ Manual decoding failed: {decode_error}")
-#                     return jobs
-            
-#             print(f"📊 Retrieved {len(data)} total items from RemoteOK")
-            
-#             # Skip first item (metadata) and process jobs
-#             job_count = 0
-#             for i, job_data in enumerate(data[1:], 1):  # Skip first metadata item
-#                 if not isinstance(job_data, dict):
-#                     continue
-                
-#                 # Get job details
-#                 position = job_data.get('position', '').lower()
-#                 description = job_data.get('description', '').lower()
-#                 company = job_data.get('company', '')
+# get('company', '')
 #                 tags = job_data.get('tags', [])
                 
 #                 # Convert tags to lowercase for matching
