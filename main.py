@@ -115,41 +115,6 @@
 #                 # More comprehensive keyword matching
 #                 search_text = f"{position} {description} {tag_text}"
                 
-#                 # Check if job matches our keywords (more lenient matching)
-#                 keyword_match = any(keyword.lower() in search_text for keyword in keywords)
-                
-#                 if keyword_match:
-#                     # Parse posting time
-#                     epoch_time = job_data.get('epoch', time.time())
-#                     try:
-#                         posting_time = datetime.fromtimestamp(epoch_time)
-#                     except (ValueError, OSError):
-#                         posting_time = datetime.now()
-                    
-#                     # More lenient time filter - last 7 days instead of 24 hours
-#                     if datetime.now() - posting_time <= timedelta(days=7):
-#                         job_count += 1
-#                         jobs.append({
-#                             'company_name': company or 'Unknown',
-#                             'job_title': job_data.get('position', 'Unknown'),
-#                             'posting_time': posting_time.strftime('%Y-%m-%d %H:%M:%S'),
-#                             'job_location': 'Remote',
-#                             'job_type': 'Full-Time',
-#                             'job_description': (description[:500] + '...' if len(description) > 500 else description),
-#                             'work_setting': 'Remote',
-#                             'ats_apply_link': job_data.get('url', ''),
-#                             'salary_min': job_data.get('salary_min'),
-#                             'salary_max': job_data.get('salary_max'),
-#                             'tags': ', '.join([str(tag) for tag in tags[:5]]),  # First 5 tags
-#                             'source': 'RemoteOK'
-#                         })
-                        
-#                         if job_count <= 3:  # Show first few matches for debugging
-#                             print(f"   ✅ Match {job_count}: {company} - {job_data.get('position', 'Unknown')}")
-            
-#             print(f"✅ Found {len(jobs)} relevant jobs from RemoteOK (out of {len(data)-1} total jobs)")
-                
-#         except requests.exceptions.RequestException as e:
 #             print(f"❌ Network error scraping RemoteOK: {e}")
 #         except Exception as e:
 #             print(f"❌ Unexpected error scraping RemoteOK: {e}")
