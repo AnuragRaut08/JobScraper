@@ -1,29 +1,4 @@
-# import requests
-# import pandas as pd
-#
-#                 'Cache-Control': 'no-cache'
-#             })
-            
-#             # Try the API endpoint directly
-#             response = fresh_session.get("https://remoteok.io/api", timeout=30)
-            
-#             if response.status_code != 200:
-#                 print(f"❌ RemoteOK API returned status {response.status_code}")
-#                 return jobs
-            
-#             print(f"✅ RemoteOK API returned status {response.status_code}")
-#             print(f"📊 Response size: {len(response.content)} bytes")
-#             print(f"📊 Content-Type: {response.headers.get('Content-Type', 'Unknown')}")
-#             print(f"📊 Content-Encoding: {response.headers.get('Content-Encoding', 'None')}")
-            
-#             # Check if response looks like valid JSON
-#             try:
-#                 # First check if the response text starts with valid JSON characters
-#                 response_text = response.text.strip()
-#                 if not response_text.startswith('[') and not response_text.startswith('{'):
-#                     print(f"❌ Response doesn't look like JSON. First 200 chars:")
-#                     print(repr(response_text[:200]))
-#                     return jobs
+
                 
 #                 data = response.json()
                 
