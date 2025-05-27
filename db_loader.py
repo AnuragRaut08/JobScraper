@@ -124,7 +124,7 @@ class JobDatabase:
             conn.close()
             return df
         except Exception as e:
-            print(f"❌ Error retrieving recent jobs: {e}")
+            print(f" Error retrieving recent jobs: {e}")
             return pd.DataFrame()
     
     def get_stats(self):
