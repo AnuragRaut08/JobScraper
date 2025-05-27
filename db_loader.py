@@ -93,7 +93,7 @@ class JobDatabase:
             conn.commit()
             conn.close()
             
-            print(f"✅ Inserted {inserted_count} new jobs into database")
+            print(f" Inserted {inserted_count} new jobs into database")
             return inserted_count
             
         except Exception as e:
