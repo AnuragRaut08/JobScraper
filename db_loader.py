@@ -47,7 +47,7 @@ class JobDatabase:
             print("✅ Database initialized successfully")
             
         except Exception as e:
-            print(f"❌ Error initializing database: {e}")
+            print(f" Error initializing database: {e}")
     
     def insert_jobs(self, jobs_df):
         """Insert jobs into database, avoiding duplicates"""
