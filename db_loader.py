@@ -44,7 +44,7 @@ class JobDatabase:
             
             conn.commit()
             conn.close()
-            print("✅ Database initialized successfully")
+            print(" Database initialized successfully")
             
         except Exception as e:
             print(f" Error initializing database: {e}")
