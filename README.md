@@ -59,7 +59,7 @@ $ python main.py interactive
 $ python main.py schedule
 ```
 
-> **Windows users**: replace `export` with `setx` or use Task Scheduler.
+> **Windows Users**: replace `export` with `setx` or use Task Scheduler.
 
 ---
 
