@@ -130,11 +130,7 @@ CREATE TABLE jobs (
 
 ---
 
-## 🎥 Demo Video
 
-[▶️ **Watch the 5‑minute walkthrough**](https://youtu.be/your_demo_link)
-
----
 
 ## 🚧 Known Limitations
 
