@@ -127,7 +127,7 @@ class JobScraper:
         usajobs_jobs = self.scrape_usajobs()
         all_jobs.extend(usajobs_jobs)
         
-        print(f"🎯 Total jobs scraped: {len(all_jobs)}")
+        print(f" Total jobs scraped: {len(all_jobs)}")
         return pd.DataFrame(all_jobs)
 
 def main():
