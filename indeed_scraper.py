@@ -86,7 +86,7 @@ class JobScraper:
                 for item in items:
                     job_data = item.get('MatchedObjectDescriptor', {})
                     
-                    # Parse posting date
+                    # Parse posting date of job
                     pub_date_str = job_data.get('PublicationStartDate', '')
                     try:
                         pub_date = datetime.strptime(pub_date_str[:10], '%Y-%m-%d')
