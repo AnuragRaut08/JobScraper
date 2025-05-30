@@ -52,7 +52,7 @@ class JobScraper:
                                 'ats_apply_link': job_data.get('url', '')
                             })
                 
-                print(f"✅ Found {len(jobs)} relevant jobs from RemoteOK")
+                print(f" Found {len(jobs)} relevant jobs from RemoteOK")
                 
         except Exception as e:
             print(f"❌ Error scraping RemoteOK: {e}")
