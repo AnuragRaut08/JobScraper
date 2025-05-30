@@ -64,7 +64,7 @@ class JobScraper:
         jobs = []
         
         try:
-            print("🔍 Fetching jobs from USAJobs...")
+            print(" Fetching jobs from USAJobs...")
             headers = {
                 'Host': 'data.usajobs.gov',
                 'User-Agent': 'your-email@example.com'
