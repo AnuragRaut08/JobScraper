@@ -16,7 +16,7 @@ class JobScraper:
         jobs = []
         
         try:
-            print("🔍 Fetching jobs from RemoteOK...")
+            print(" Fetching jobs from RemoteOK...")
             response = self.session.get("https://remoteok.io/api", timeout=15)
             
             if response.status_code == 200:
