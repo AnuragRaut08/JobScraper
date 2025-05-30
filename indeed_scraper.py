@@ -55,7 +55,7 @@ class JobScraper:
                 print(f" Found {len(jobs)} relevant jobs from RemoteOK")
                 
         except Exception as e:
-            print(f"❌ Error scraping RemoteOK: {e}")
+            print(f" Error scraping RemoteOK: {e}")
         
         return jobs
     
