@@ -135,7 +135,7 @@ def main():
     jobs_df = scraper.scrape_all_sources()
     
     if not jobs_df.empty:
-        print("\n📊 Sample of scraped jobs:")
+        print("\n Sample of scraped jobs:")
         print(jobs_df[['company_name', 'job_title', 'job_location']].head())
         
         # Save to CSV for inspection
