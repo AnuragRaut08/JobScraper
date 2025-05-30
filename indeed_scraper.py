@@ -140,7 +140,7 @@ def main():
         
         # Save to CSV for inspection
         jobs_df.to_csv('scraped_jobs.csv', index=False)
-        print("💾 Jobs saved to 'scraped_jobs.csv'")
+        print(" Jobs saved to 'scraped_jobs.csv'")
     else:
         print(" No jobs found")
     
