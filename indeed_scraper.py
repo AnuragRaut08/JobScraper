@@ -105,10 +105,10 @@ class JobScraper:
                     except:
                         continue
                         
-                print(f"✅ Found {len(jobs)} relevant jobs from USAJobs")
+                print(f" Found {len(jobs)} relevant jobs from USAJobs")
                 
         except Exception as e:
-            print(f"❌ Error scraping USAJobs: {e}")
+            print(f" Error scraping USAJobs: {e}")
         
         return jobs
     
