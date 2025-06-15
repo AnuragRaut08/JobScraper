@@ -22,7 +22,6 @@ def setup_logger(name='visa_friendly', log_file='logs/pipeline.log'):
     )
     
     simple_formatter = logging.Formatter('%(message)s')
-    
     # File handler
     file_handler = logging.FileHandler(log_file)
     file_handler.setLevel(logging.INFO)
