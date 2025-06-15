@@ -2,7 +2,6 @@ import pandas as pd
 from fuzzywuzzy import fuzz
 import re
 
-
 class CompanyFilter:
     def __init__(self, h1b_companies_file='h1bcompanies_list.csv'):
         """Initialize with H1B companies list"""
