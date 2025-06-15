@@ -2,6 +2,7 @@ import logging
 import os
 from datetime import datetime
 
+
 def setup_logger(name='visa_friendly', log_file='logs/pipeline.log'):
     """Setup logger for the application"""
     
