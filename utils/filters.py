@@ -41,6 +41,7 @@ class CompanyFilter:
         """Normalize company name for better matching"""
         if not company_name:
             return ""
+
         
         # Convert to lowercase and strip
         name = company_name.lower().strip()
