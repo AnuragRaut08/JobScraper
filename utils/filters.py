@@ -13,7 +13,6 @@ class CompanyFilter:
             df = pd.read_csv(filepath)
             # Assuming the CSV has a column with company names
             # Adjust column name based on your CSV structure
-            
             if 'Company' in df.columns:
                 companies = df['Company'].str.lower().str.strip().tolist()
             elif 'company' in df.columns:
