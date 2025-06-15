@@ -76,8 +76,7 @@ class CompanyFilter:
         best_score = 0
         
         for h1b_company in self.h1b_companies:
-            h1b_company_norm = self.normalize_company_name(h1b_company)
-            
+            h1b_company_norm = self.normalize_company_name(h1b_company)  
             # Try different fuzzy matching methods
             scores = [
                 fuzz.ratio(job_company_norm, h1b_company_norm),
