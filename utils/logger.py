@@ -36,3 +36,5 @@ def setup_logger(name='visa_friendly', log_file='logs/pipeline.log'):
     logger.addHandler(console_handler)
     
     return logger
+
+
