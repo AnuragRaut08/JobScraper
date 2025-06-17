@@ -1,8 +1,7 @@
 
         
 
-                    
-#                     response = session.get(
+              
 #                         "https://data.usajobs.gov/api/search", 
 #                         params=params, 
 #                         timeout=30
