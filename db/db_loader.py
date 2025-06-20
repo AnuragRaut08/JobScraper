@@ -44,10 +44,10 @@ class JobDatabase:
             
             conn.commit()
             conn.close()
-            print(" Database initialized successfully")
+            print("✅ Database initialized successfully")
             
         except Exception as e:
-            print(f" Error initializing database: {e}")
+            print(f"❌ Error initializing database: {e}")
     
     def insert_jobs(self, jobs_df):
         """Insert jobs into database, avoiding duplicates"""
@@ -93,7 +93,7 @@ class JobDatabase:
             conn.commit()
             conn.close()
             
-            print(f" Inserted {inserted_count} new jobs into database")
+            print(f"✅ Inserted {inserted_count} new jobs into database")
             return inserted_count
             
         except Exception as e:
@@ -124,7 +124,7 @@ class JobDatabase:
             conn.close()
             return df
         except Exception as e:
-            print(f" Error retrieving recent jobs: {e}")
+            print(f"❌ Error retrieving recent jobs: {e}")
             return pd.DataFrame()
     
     def get_stats(self):
