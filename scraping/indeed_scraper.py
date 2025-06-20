@@ -16,7 +16,7 @@ class JobScraper:
         jobs = []
         
         try:
-            print(" Fetching jobs from RemoteOK...")
+            print("🔍 Fetching jobs from RemoteOK...")
             response = self.session.get("https://remoteok.io/api", timeout=15)
             
             if response.status_code == 200:
@@ -86,7 +86,7 @@ class JobScraper:
                 for item in items:
                     job_data = item.get('MatchedObjectDescriptor', {})
                     
-                    # Parse posting date of job
+                    # Parse posting date
                     pub_date_str = job_data.get('PublicationStartDate', '')
                     try:
                         pub_date = datetime.strptime(pub_date_str[:10], '%Y-%m-%d')
@@ -105,10 +105,10 @@ class JobScraper:
                     except:
                         continue
                         
-                print(f" Found {len(jobs)} relevant jobs from USAJobs")
+                print(f"✅ Found {len(jobs)} relevant jobs from USAJobs")
                 
         except Exception as e:
-            print(f" Error scraping USAJobs: {e}")
+            print(f"❌ Error scraping USAJobs: {e}")
         
         return jobs
     
@@ -127,7 +127,7 @@ class JobScraper:
         usajobs_jobs = self.scrape_usajobs()
         all_jobs.extend(usajobs_jobs)
         
-        print(f" Total jobs scraped: {len(all_jobs)}")
+        print(f"🎯 Total jobs scraped: {len(all_jobs)}")
         return pd.DataFrame(all_jobs)
 
 def main():
@@ -135,14 +135,14 @@ def main():
     jobs_df = scraper.scrape_all_sources()
     
     if not jobs_df.empty:
-        print("\n Sample of scraped jobs:")
+        print("\n📊 Sample of scraped jobs:")
         print(jobs_df[['company_name', 'job_title', 'job_location']].head())
         
         # Save to CSV for inspection
         jobs_df.to_csv('scraped_jobs.csv', index=False)
-        print(" Jobs saved to 'scraped_jobs.csv'")
+        print("💾 Jobs saved to 'scraped_jobs.csv'")
     else:
-        print(" No jobs found")
+        print("❌ No jobs found")
     
     return jobs_df
 
