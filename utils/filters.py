@@ -13,7 +13,6 @@ class CompanyFilter:
             df = pd.read_csv(filepath)
             # Assuming the CSV has a column with company names
             # Adjust column name based on your CSV structure
-            
             if 'Company' in df.columns:
                 companies = df['Company'].str.lower().str.strip().tolist()
             elif 'company' in df.columns:
@@ -42,7 +41,6 @@ class CompanyFilter:
         """Normalize company name for better matching"""
         if not company_name:
             return ""
-
         
         # Convert to lowercase and strip
         name = company_name.lower().strip()
@@ -76,7 +74,8 @@ class CompanyFilter:
         best_score = 0
         
         for h1b_company in self.h1b_companies:
-            h1b_company_norm = self.normalize_company_name(h1b_company)  
+            h1b_company_norm = self.normalize_company_name(h1b_company)
+            
             # Try different fuzzy matching methods
             scores = [
                 fuzz.ratio(job_company_norm, h1b_company_norm),
