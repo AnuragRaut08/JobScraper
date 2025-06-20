@@ -1,7 +1,7 @@
+# utils/logger.py
 import logging
 import os
 from datetime import datetime
-
 
 def setup_logger(name='visa_friendly', log_file='logs/pipeline.log'):
     """Setup logger for the application"""
@@ -37,4 +37,3 @@ def setup_logger(name='visa_friendly', log_file='logs/pipeline.log'):
     logger.addHandler(console_handler)
     
     return logger
-
