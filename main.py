@@ -1,180 +1,3 @@
-
-        
-
-              
-#                         "https://data.usajobs.gov/api/search", 
-#                         params=params, 
-#                         timeout=30
-#                     )
-                    
-#                     if response.status_code == 401:
-#                         print("❌ USAJobs requires API key registration. Visit: https://developer.usajobs.gov/")
-#                         break
-#                     elif response.status_code != 200:
-#                         print(f"❌ USAJobs API returned status {response.status_code} for '{keyword}'")
-#                         continue
-                    
-#                     data = response.json()
-#                     items = data.get('SearchResult', {}).get('SearchResultItems', [])
-                    
-#                     for item in items:
-#                         job_data = item.get('MatchedObjectDescriptor', {})
-                        
-#                         # Parse posting date
-#                         pub_date_str = job_data.get('PublicationStartDate', '')
-#                         try:
-#                             pub_date = datetime.strptime(pub_date_str[:10], '%Y-%m-%d')
-                            
-#                             jobs.append({
-#                                 'company_name': job_data.get('OrganizationName', 'US Government'),
-#                                 'job_title': job_data.get('PositionTitle', 'Unknown'),
-#                                 'posting_time': pub_date.strftime('%Y-%m-%d %H:%M:%S'),
-#                                 'job_location': ', '.join(job_data.get('PositionLocationDisplay', [])),
-#                                 'job_type': job_data.get('PositionScheduleTypeDisplay', ['Full-Time'])[0],
-#                                 'job_description': job_data.get('QualificationSummary', '')[:500],
-#                                 'work_setting': 'Onsite',
-#                                 'ats_apply_link': job_data.get('ApplyURI', [''])[0],
-#                                 'salary_min': job_data.get('PositionRemuneration', [{}])[0].get('MinimumRange'),
-#                                 'salary_max': job_data.get('PositionRemuneration', [{}])[0].get('MaximumRange'),
-#                                 'source': 'USAJobs'
-#                             })
-#                         except (ValueError, TypeError, IndexError):
-#                             continue
-                    
-#                     print(f"   📊 Found {len(items)} jobs for keyword '{keyword}'")
-#                     self.add_delay()  # Rate limiting
-                    
-#                 except Exception as e:
-#                     print(f"❌ Error processing keyword '{keyword}': {e}")
-#                     continue
-            
-#             print(f"✅ Found {len(jobs)} total jobs from USAJobs")
-                
-#         except Exception as e:
-#             print(f"❌ Error scraping USAJobs: {e}")
-        
-#         return jobs
-    
-#     def scrape_alternative_sources(self):
-#         """Scrape from alternative job sources that don't require API keys"""
-#         jobs = []
-        
-#         # Try a different approach - scrape job aggregators that are more lenient
-#         try:
-#             print("🔍 Trying alternative job sources...")
-            
-#             # Example: Try a different remote job board (this is just an example structure)
-#             # You would need to implement actual scrapers for these sites
-            
-#             # For now, let's create some sample data to test the pipeline
-#             sample_jobs = [
-#                 {
-#                     'company_name': 'TechCorp',
-#                     'job_title': 'Senior Data Engineer',
-#                     'posting_time': datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
-#                     'job_location': 'Remote',
-#                     'job_type': 'Full-Time',
-#                     'job_description': 'Build scalable data pipelines using Python, SQL, and cloud technologies.',
-#                     'work_setting': 'Remote',
-#                     'ats_apply_link': 'https://example.com/job1',
-#                     'source': 'Sample'
-#                 },
-#                 {
-#                     'company_name': 'DataViz Inc',
-#                     'job_title': 'Python Data Analyst',
-#                     'posting_time': datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
-#                     'job_location': 'San Francisco, CA',
-#                     'job_type': 'Full-Time',
-#                     'job_description': 'Analyze business data using Python, pandas, and visualization tools.',
-#                     'work_setting': 'Hybrid',
-#                     'ats_apply_link': 'https://example.com/job2',
-#                     'source': 'Sample'
-#                 }
-#             ]
-            
-#             jobs.extend(sample_jobs)
-#             print(f"✅ Added {len(sample_jobs)} sample jobs for testing")
-            
-#         except Exception as e:
-#             print(f"❌ Error with alternative sources: {e}")
-        
-#         return jobs
-
-    
-#     print("🧪 Testing RemoteOK scraper...")
-#     remoteok_jobs = scraper.scrape_remoteok()
-#     print(f"RemoteOK results: {len(remoteok_jobs)} jobs")
-    
-#     scraper.add_delay()
-    
-#     print("\n🧪 Testing USAJobs scraper...")
-#     usajobs_jobs = scraper.scrape_usajobs()
-#     print(f"USAJobs results: {len(usajobs_jobs)} jobs")
-    
-#     return remoteok_jobs, usajobs_jobs
-
-# def debug_remoteok_response():
-#     """Debug function to test RemoteOK API response"""
-#     import requests
-#     import json
-    
-#     session = requests.Session()
-#     session.headers.update({
-#         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-#         'Accept': 'application/json, text/plain, */*',
-#         'Accept-Language': 'en-US,en;q=0.9',
-#         'Referer': 'https://remoteok.io/'
-#     })
-    
-#     print("🧪 Testing RemoteOK API response...")
-    
-#     try:
-#         response = session.get("https://remoteok.io/api", timeout=30)
-        
-#         print(f"Status Code: {response.status_code}")
-#         print(f"Headers: {dict(response.headers)}")
-#         print(f"Content Length: {len(response.content)}")
-#         print(f"Content Type: {response.headers.get('Content-Type')}")
-
-#         print(f"❌ Request failed: {e}")
-
-# def main():
-#     """Main function to run the scraper"""
-#     print("🎯 VisaFriendly Job Scraper v2.1")
-#     print("="*50)
-    
-#     # First, debug the RemoteOK API
-#     debug_remoteok_response()
-#     print("\n" + "="*50)
-    
-#     scraper = JobScraper()
-#     jobs_df = scraper.scrape_all_sources()
-    
-#     if not jobs_df.empty:
-#         print("\n📊 Sample of scraped jobs:")
-#         print(jobs_df[['company_name', 'job_title', 'job_location', 'source']].head(10))
-        
-#         # Save to CSV with timestamp
-#         timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
-#         filename = f'scraped_jobs_{timestamp}.csv'
-#         jobs_df.to_csv(filename, index=False)
-#         print(f"\n💾 Jobs saved to '{filename}'")
-        
-#         # Show summary statistics
-#         print(f"\n📈 Summary:")
-#         print(f"   Total jobs found: {len(jobs_df)}")
-#         print(f"   Sources: {', '.join(jobs_df['source'].value_counts().index.tolist())}")
-#         print(f"   Date range: {jobs_df['posting_time'].min()} to {jobs_df['posting_time'].max()}")
-        
-#     else:
-#         print("\n❌ No jobs found. Running individual tests...")
-#         test_individual_scrapers()
-    
-#     return jobs_df
-
-# if __name__ == "__main__":
-#     main()
-
 import requests
 import pandas as pd
 from datetime import datetime, timedelta
@@ -260,7 +83,7 @@ class EnhancedJobScraper:
             return True
             
         except Exception as e:
-            print(f"❌ Failed to setup Selenium driver: {e}")
+            print(f" Failed to setup Selenium driver: {e}")
             print("💡 Make sure ChromeDriver is installed and in PATH")
             return False
     
@@ -269,7 +92,7 @@ class EnhancedJobScraper:
         min_d = min_delay or self.min_delay
         max_d = max_delay or self.max_delay
         delay = random.uniform(min_d, max_d)
-        print(f"⏳ Waiting {delay:.1f}s...")
+        print(f"Waiting {delay:.1f}s...")
         time.sleep(delay)
     
     def scrape_linkedin_jobs(self, keywords=['data engineer', 'python developer', 'data analyst'], location='United States'):
@@ -292,10 +115,10 @@ class EnhancedJobScraper:
                 jobs.extend(jobs_method2)
                 self.driver.quit()
             
-            print(f"✅ Found {len(jobs)} jobs from LinkedIn")
+            print(f" Found {len(jobs)} jobs from LinkedIn")
             
         except Exception as e:
-            print(f"❌ Error scraping LinkedIn: {e}")
+            print(f" Error scraping LinkedIn: {e}")
         
         return jobs
     
@@ -313,12 +136,12 @@ class EnhancedJobScraper:
                 
                 url = f"https://www.linkedin.com/jobs/search?keywords={encoded_keyword}&location={encoded_location}&f_TPR=r86400"  # Last 24 hours
                 
-                print(f"   🔎 Searching for '{keyword}' in {location}")
+                print(f"  Searching for '{keyword}' in {location}")
                 
                 response = session.get(url, timeout=30)
                 
                 if response.status_code != 200:
-                    print(f"   ❌ LinkedIn returned status {response.status_code}")
+                    print(f"   LinkedIn returned status {response.status_code}")
                     continue
                 
                 soup = BeautifulSoup(response.content, 'html.parser')
@@ -352,7 +175,7 @@ class EnhancedJobScraper:
                 self.add_delay(2, 4)  # Shorter delay for LinkedIn
         
         except Exception as e:
-            print(f"❌ Error in LinkedIn public scraping: {e}")
+            print(f"Error in LinkedIn public scraping: {e}")
         
         return jobs
     
@@ -370,7 +193,7 @@ class EnhancedJobScraper:
                 encoded_location = urllib.parse.quote(location)
                 url = f"https://www.linkedin.com/jobs/search?keywords={encoded_keyword}&location={encoded_location}&f_TPR=r86400"
                 
-                print(f"   🔎 Selenium search: '{keyword}' in {location}")
+                print(f"  Selenium search: '{keyword}' in {location}")
                 
                 self.driver.get(url)
                 self.add_delay(3, 5)
@@ -381,7 +204,7 @@ class EnhancedJobScraper:
                         EC.presence_of_element_located((By.CSS_SELECTOR, "[data-job-id]"))
                     )
                 except TimeoutException:
-                    print("   ⚠️ Timeout waiting for job cards")
+                    print("   Timeout waiting for job cards")
                     continue
                 
                 # Find job cards
@@ -423,7 +246,7 @@ class EnhancedJobScraper:
                 self.add_delay(5, 8)  # Longer delay between keyword searches
         
         except Exception as e:
-            print(f"❌ Error in LinkedIn Selenium scraping: {e}")
+            print(f"Error in LinkedIn Selenium scraping: {e}")
         
         return jobs
     
@@ -432,12 +255,12 @@ class EnhancedJobScraper:
         jobs = []
         
         try:
-            print("🔍 Fetching jobs from Indeed...")
+            print(" Fetching jobs from Indeed...")
             
             session = self.create_session()
             
             for keyword in keywords:
-                print(f"   🔎 Searching for '{keyword}' in {location}")
+                print(f"  Searching for '{keyword}' in {location}")
                 
                 # Indeed search URL
                 params = {
@@ -452,7 +275,7 @@ class EnhancedJobScraper:
                 response = session.get(url, timeout=30)
                 
                 if response.status_code != 200:
-                    print(f"   ❌ Indeed returned status {response.status_code}")
+                    print(f" Indeed returned status {response.status_code}")
                     continue
                 
                 soup = BeautifulSoup(response.content, 'html.parser')
@@ -464,7 +287,7 @@ class EnhancedJobScraper:
                     # Try alternative selectors
                     job_cards = soup.find_all('td', {'class': 'resultContent'})
                 
-                print(f"   📊 Found {len(job_cards)} job cards")
+                print(f" Found {len(job_cards)} job cards")
                 
                 for card in job_cards[:10]:
                     try:
@@ -516,9 +339,9 @@ class EnhancedJobScraper:
                 self.add_delay(3, 6)  # Delay between searches
         
         except Exception as e:
-            print(f"❌ Error scraping Indeed: {e}")
+            print(f"Error scraping Indeed: {e}")
         
-        print(f"✅ Found {len(jobs)} jobs from Indeed")
+        print(f" Found {len(jobs)} jobs from Indeed")
         return jobs
     
     def scrape_google_jobs(self, keywords=['data engineer', 'python developer', 'data analyst'], location='United States'):
@@ -529,7 +352,7 @@ class EnhancedJobScraper:
         jobs = []
         
         try:
-            print("🔍 Fetching jobs from Google Jobs...")
+            print(" Fetching jobs from Google Jobs...")
             
             # Method 1: Try SerpApi (recommended - requires API key)
             serpapi_key = os.getenv('SERPAPI_KEY')
@@ -537,16 +360,16 @@ class EnhancedJobScraper:
                 jobs_serpapi = self._scrape_google_jobs_serpapi(keywords, location, serpapi_key)
                 jobs.extend(jobs_serpapi)
             else:
-                print("   💡 Set SERPAPI_KEY environment variable for better Google Jobs access")
+                print(" Set SERPAPI_KEY environment variable for better Google Jobs access")
             
             # Method 2: Try direct scraping (limited success due to anti-bot measures)
             jobs_direct = self._scrape_google_jobs_direct(keywords, location)
             jobs.extend(jobs_direct)
             
-            print(f"✅ Found {len(jobs)} jobs from Google Jobs")
+            print(f" Found {len(jobs)} jobs from Google Jobs")
             
         except Exception as e:
-            print(f"❌ Error scraping Google Jobs: {e}")
+            print(f" Error scraping Google Jobs: {e}")
         
         return jobs
     
@@ -586,12 +409,12 @@ class EnhancedJobScraper:
                             'source': 'Google Jobs (SerpApi)'
                         })
                     
-                    print(f"   📊 SerpApi found {len(jobs_results)} jobs for '{keyword}'")
+                    print(f" SerpApi found {len(jobs_results)} jobs for '{keyword}'")
                 
                 self.add_delay(1, 2)  # Short delay for API calls
         
         except Exception as e:
-            print(f"❌ Error with SerpApi: {e}")
+            print(f" Error with SerpApi: {e}")
         
         return jobs
     
@@ -605,7 +428,7 @@ class EnhancedJobScraper:
                 return jobs
             
             for keyword in keywords[:1]:  # Very limited to avoid blocks
-                print(f"   🔎 Google direct search: '{keyword}' in {location}")
+                print(f"    Google direct search: '{keyword}' in {location}")
                 
                 # Google Jobs search URL
                 query = f"{keyword} jobs in {location}"
@@ -647,12 +470,12 @@ class EnhancedJobScraper:
                             continue
                 
                 except TimeoutException:
-                    print("   ⚠️ Google Jobs timeout - may be blocked")
+                    print("  Google Jobs timeout - may be blocked")
             
             self.driver.quit()
         
         except Exception as e:
-            print(f"❌ Error in Google direct scraping: {e}")
+            print(f" Error in Google direct scraping: {e}")
         
         return jobs
     
@@ -661,18 +484,18 @@ class EnhancedJobScraper:
         jobs = []
         
         try:
-            print("🔍 Fetching jobs from RemoteOK...")
+            print(" Fetching jobs from RemoteOK...")
             
             session = self.create_session()
             response = session.get("https://remoteok.io/api", timeout=30)
             
             if response.status_code != 200:
-                print(f"❌ RemoteOK API returned status {response.status_code}")
+                print(f" RemoteOK API returned status {response.status_code}")
                 return jobs
             
             data = response.json()
-            print(f"📊 Retrieved {len(data)} total items from RemoteOK")
-            
+            print(f" Retrieved {len(data)} total items from RemoteOK")
+        
             job_count = 0
             for job_data in data[1:]:  # Skip first metadata item
                 if not isinstance(job_data, dict):
@@ -710,10 +533,10 @@ class EnhancedJobScraper:
                             'source': 'RemoteOK'
                         })
             
-            print(f"✅ Found {len(jobs)} relevant jobs from RemoteOK")
+            print(f" Found {len(jobs)} relevant jobs from RemoteOK")
                 
         except Exception as e:
-            print(f"❌ Error scraping RemoteOK: {e}")
+            print(f" Error scraping RemoteOK: {e}")
         
         return jobs
     
@@ -721,9 +544,9 @@ class EnhancedJobScraper:
         """Scrape from all available sources"""
         all_jobs = []
         
-        print("🚀 Starting comprehensive job scraping...")
-        print(f"🎯 Keywords: {', '.join(keywords)}")
-        print(f"📍 Location: {location}")
+        print(" Starting comprehensive job scraping...")
+        print(f" Keywords: {', '.join(keywords)}")
+        print(f" Location: {location}")
         
         # Scrape LinkedIn
         print("\n" + "="*50)
@@ -756,7 +579,7 @@ class EnhancedJobScraper:
         remoteok_jobs = self.scrape_remoteok()
         all_jobs.extend(remoteok_jobs)
         
-        print(f"\n🎯 Total jobs scraped: {len(all_jobs)}")
+        print(f"\n Total jobs scraped: {len(all_jobs)}")
         
         if all_jobs:
             # Create DataFrame and remove duplicates
@@ -766,7 +589,7 @@ class EnhancedJobScraper:
             final_count = len(df)
             
             if initial_count != final_count:
-                print(f"🔄 Removed {initial_count - final_count} duplicate jobs")
+                print(f" Removed {initial_count - final_count} duplicate jobs")
             
             return df
         else:
@@ -779,7 +602,7 @@ class EnhancedJobScraper:
 
 def setup_instructions():
     """Print setup instructions for the scraper"""
-    print("🔧 SETUP INSTRUCTIONS")
+    print("SETUP INSTRUCTIONS")
     print("="*50)
     print("1. Install required packages:")
     print("   pip install requests pandas beautifulsoup4 selenium")
@@ -797,7 +620,7 @@ def setup_instructions():
     print("   - Apply for LinkedIn API access")
     print("   - Use official LinkedIn Jobs API")
     print("")
-    print("⚠️  IMPORTANT NOTES:")
+    print(" IMPORTANT NOTES:")
     print("- These sites have anti-bot protection")
     print("- Use responsibly and respect robots.txt")
     print("- Consider using official APIs when available")
@@ -811,19 +634,19 @@ def test_individual_scrapers():
     keywords = ['data engineer', 'python developer']
     location = 'United States'
     
-    print("🧪 Testing LinkedIn scraper...")
+    print(" Testing LinkedIn scraper...")
     linkedin_jobs = scraper.scrape_linkedin_jobs(keywords, location)
     print(f"LinkedIn results: {len(linkedin_jobs)} jobs\n")
     
     scraper.add_delay()
     
-    print("🧪 Testing Indeed scraper...")
+    print(" Testing Indeed scraper...")
     indeed_jobs = scraper.scrape_indeed_jobs(keywords, location)
     print(f"Indeed results: {len(indeed_jobs)} jobs\n")
     
     scraper.add_delay()
     
-    print("🧪 Testing Google Jobs scraper...")
+    print(" Testing Google Jobs scraper...")
     google_jobs = scraper.scrape_google_jobs(keywords, location)
     print(f"Google Jobs results: {len(google_jobs)} jobs\n")
     
@@ -831,7 +654,7 @@ def test_individual_scrapers():
 
 def main():
     """Main function to run the enhanced scraper"""
-    print("🎯 Enhanced Job Scraper v3.0")
+    print(" Enhanced Job Scraper v3.0")
     print("LinkedIn • Indeed • Google Jobs • RemoteOK")
     
     setup_instructions()
@@ -847,17 +670,17 @@ def main():
         jobs_df = scraper.scrape_all_sources(keywords, location)
         
         if not jobs_df.empty:
-            print("\n📊 Sample of scraped jobs:")
+            print("\n Sample of scraped jobs:")
             print(jobs_df[['company_name', 'job_title', 'job_location', 'source']].head(15))
             
             # Save to CSV with timestamp
             timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
             filename = f'enhanced_scraped_jobs_{timestamp}.csv'
             jobs_df.to_csv(filename, index=False)
-            print(f"\n💾 Jobs saved to '{filename}'")
+            print(f"\n Jobs saved to '{filename}'")
             
             # Show summary statistics
-            print(f"\n📈 Summary:")
+            print(f"\n Summary:")
             print(f"   Total jobs found: {len(jobs_df)}")
             print(f"   Sources breakdown:")
             source_counts = jobs_df['source'].value_counts()
@@ -877,13 +700,13 @@ def main():
                 print(f"     - {company}: {count} jobs")
             
         else:
-            print("\n❌ No jobs found. Running individual tests...")
+            print("\n No jobs found. Running individual tests...")
             test_individual_scrapers()
     
     except KeyboardInterrupt:
-        print("\n⏹️ Scraping interrupted by user")
+        print("\n Scraping interrupted by user")
     except Exception as e:
-        print(f"\n❌ Unexpected error: {e}")
+        print(f"\n Unexpected error: {e}")
     finally:
         # Cleanup
         if hasattr(scraper, 'driver') and scraper.driver:
@@ -895,7 +718,7 @@ def main():
 
 def create_job_alert_system():
     """Create a simple job alert system"""
-    print("📧 Job Alert System")
+    print(" Job Alert System")
     print("="*30)
     
     class JobAlert:
@@ -906,38 +729,38 @@ def create_job_alert_system():
         
         def add_keyword(self, keyword):
             self.keywords.append(keyword)
-            print(f"✅ Added keyword: {keyword}")
+            print(f" Added keyword: {keyword}")
         
         def add_location(self, location):
             self.locations.append(location)
-            print(f"✅ Added location: {location}")
+            print(f" Added location: {location}")
         
         def set_email(self, email):
             self.email = email
-            print(f"✅ Email set: {email}")
+            print(f" Email set: {email}")
         
         def run_alert(self):
             """Run job search and send alerts"""
             if not self.keywords or not self.locations:
-                print("❌ Please add keywords and locations first")
+                print(" Please add keywords and locations first")
                 return
             
             scraper = EnhancedJobScraper()
             jobs_df = scraper.scrape_all_sources(self.keywords, self.locations[0])
             
             if not jobs_df.empty:
-                print(f"🎯 Found {len(jobs_df)} new jobs!")
+                print(f" Found {len(jobs_df)} new jobs!")
                 
                 # Here you would implement email sending logic
                 # For now, just save to file
                 timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
                 filename = f'job_alert_{timestamp}.csv'
                 jobs_df.to_csv(filename, index=False)
-                print(f"💾 Alert results saved to: {filename}")
+                print(f" Alert results saved to: {filename}")
                 
                 return jobs_df
             else:
-                print("📭 No new jobs found")
+                print(" No new jobs found")
                 return pd.DataFrame()
     
     return JobAlert()
@@ -945,14 +768,14 @@ def create_job_alert_system():
 def analyze_job_market(jobs_df):
     """Analyze job market trends from scraped data"""
     if jobs_df.empty:
-        print("❌ No data to analyze")
+        print("No data to analyze")
         return
     
-    print("\n📊 JOB MARKET ANALYSIS")
+    print("\n JOB MARKET ANALYSIS")
     print("="*50)
     
     # Most common job titles
-    print("🏆 Most Common Job Titles:")
+    print(" Most Common Job Titles:")
     title_words = []
     for title in jobs_df['job_title'].str.lower():
         title_words.extend(title.split())
@@ -964,36 +787,28 @@ def analyze_job_market(jobs_df):
             print(f"   {word}: {count} mentions")
     
     # Company analysis
-    print(f"\n🏢 Company Distribution:")
+    print(f"\n Company Distribution:")
     company_stats = jobs_df['company_name'].value_counts().head(10)
     for company, count in company_stats.items():
         print(f"   {company}: {count} jobs")
     
     # Location analysis
-    print(f"\n📍 Location Distribution:")
+    print(f"\n Location Distribution:")
     location_stats = jobs_df['job_location'].value_counts().head(10)
     for location, count in location_stats.items():
         print(f"   {location}: {count} jobs")
     
     # Source analysis
-    print(f"\n🌐 Source Distribution:")
+    print(f"\n Source Distribution:")
     source_stats = jobs_df['source'].value_counts()
     for source, count in source_stats.items():
         percentage = (count / len(jobs_df)) * 100
         print(f"   {source}: {count} jobs ({percentage:.1f}%)")
-    
-    # # Salary analysis (if available)
-    # salary_df = jobs_df.dropna(subset=['salary_min', 'salary_max'])
-    # if not salary_df.empty:
-    #     print(f"\n💰 Salary Analysis ({len(salary_df)} jobs with salary data):")
-    #     avg_min = salary_df['salary_min'].mean()
-    #     avg_max = salary_df['salary_max'].mean()
-    #     print(f"   Average salary range: ${avg_min:,.0f} - ${avg_max:,.0f}")
 
 def export_to_multiple_formats(jobs_df, base_filename="scraped_jobs"):
     """Export jobs data to multiple formats"""
     if jobs_df.empty:
-        print("❌ No data to export")
+        print(" No data to export")
         return
     
     timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
@@ -1001,20 +816,20 @@ def export_to_multiple_formats(jobs_df, base_filename="scraped_jobs"):
     # CSV export
     csv_file = f"{base_filename}_{timestamp}.csv"
     jobs_df.to_csv(csv_file, index=False)
-    print(f"💾 CSV exported: {csv_file}")
+    print(f" CSV exported: {csv_file}")
     
     # JSON export
     json_file = f"{base_filename}_{timestamp}.json"
     jobs_df.to_json(json_file, orient='records', indent=2)
-    print(f"💾 JSON exported: {json_file}")
+    print(f" JSON exported: {json_file}")
     
     # Excel export (if openpyxl is available)
     try:
         excel_file = f"{base_filename}_{timestamp}.xlsx"
         jobs_df.to_excel(excel_file, index=False, sheet_name='Jobs')
-        print(f"💾 Excel exported: {excel_file}")
+        print(f"Excel exported: {excel_file}")
     except ImportError:
-        print("⚠️ Install openpyxl for Excel export: pip install openpyxl")
+        print(" Install openpyxl for Excel export: pip install openpyxl")
     
     # HTML export for viewing
     html_file = f"{base_filename}_{timestamp}.html"
@@ -1043,14 +858,14 @@ def export_to_multiple_formats(jobs_df, base_filename="scraped_jobs"):
     
     with open(html_file, 'w', encoding='utf-8') as f:
         f.write(html_content)
-    print(f"💾 HTML exported: {html_file}")
+    print(f" HTML exported: {html_file}")
 
 def run_scheduled_scraping():
     """Run scraping on a schedule"""
     import schedule
     
     def job_scraping_task():
-        print(f"\n⏰ Scheduled scraping started at {datetime.now()}")
+        print(f"\n Scheduled scraping started at {datetime.now()}")
         scraper = EnhancedJobScraper()
         keywords = ['data engineer', 'python developer', 'data analyst']
         location = 'United States'
@@ -1061,21 +876,21 @@ def run_scheduled_scraping():
             export_to_multiple_formats(jobs_df, "scheduled_jobs")
             analyze_job_market(jobs_df)
         
-        print(f"✅ Scheduled scraping completed at {datetime.now()}")
+        print(f" Scheduled scraping completed at {datetime.now()}")
     
     # Schedule the job (uncomment and modify as needed)
-    # schedule.every().hour.do(job_scraping_task)  # Every hour
-    # schedule.every().day.at("09:00").do(job_scraping_task)  # Daily at 9 AM
+    schedule.every().hour.do(job_scraping_task)  # Every hour
+    schedule.every().day.at("09:00").do(job_scraping_task)  # Daily at 9 AM
     
-    print("📅 Scheduling system ready!")
-    print("Uncomment schedule lines in run_scheduled_scraping() to activate")
+    print(" Scheduling system ready!")
+    
     
     # Run once immediately for testing
     job_scraping_task()
 
 def interactive_mode():
     """Interactive mode for customized scraping"""
-    print("🎮 INTERACTIVE JOB SCRAPER")
+    print(" INTERACTIVE JOB SCRAPER")
     print("="*40)
     
     # Get user preferences
@@ -1086,8 +901,8 @@ def interactive_mode():
     
     location = input("Location (default: United States): ").strip() or 'United States'
     
-    print(f"\n🎯 Searching for: {', '.join(keywords)}")
-    print(f"📍 Location: {location}")
+    print(f"\n Searching for: {', '.join(keywords)}")
+    print(f" Location: {location}")
     
     # Source selection
     print("\nSelect sources to scrape:")
@@ -1114,10 +929,10 @@ def interactive_mode():
             jobs_df = scraper.scrape_all_sources(keywords, location)
         
         if not jobs_df.empty:
-            print(f"\n✅ Found {len(jobs_df)} jobs!")
+            print(f"\n Found {len(jobs_df)} jobs!")
             
             # Show preview
-            print("\n📋 Preview:")
+            print("\n Preview:")
             print(jobs_df[['company_name', 'job_title', 'job_location', 'source']].head(10))
             
             # Export options
@@ -1131,10 +946,10 @@ def interactive_mode():
                 analyze_job_market(jobs_df)
         
         else:
-            print("\n❌ No jobs found. Try different keywords or locations.")
+            print("\n No jobs found. Try different keywords or locations.")
     
     except KeyboardInterrupt:
-        print("\n⏹️ Scraping interrupted")
+        print("\n Scraping interrupted")
     finally:
         if hasattr(scraper, 'driver') and scraper.driver:
             scraper.driver.quit()
