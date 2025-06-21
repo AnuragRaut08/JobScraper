@@ -20,17 +20,20 @@
 
 ```
 jobscraper/
-├─ main.py                  # CLI entry‑point (run / test / interactive / schedule)
-├─ pipeline.py              # Orchestrates scraping → filter → DB → export
-├─ db/
-│   └─ job_database.py      # SQLite schema, insert, stats, cleanup
-├─ scrapers/
-│   ├─ linkedin.py          # Selenium‑based LinkedIn scraper
-│   ├─ google_jobs.py       # SerpAPI Google Jobs scraper (optional)
-│   └─ remoteok.py          # Lightweight JSON API fallback
-├─ data/
-│   └─ h1b_sponsors.txt     # 21k+ visa‑friendly companies
-└─ README.md
+├── main.py                           # CLI entry-point (run / test / schedule / interactive)
+├── scraping/
+│   └── scraper.py                    # Unified scraper handling LinkedIn, Google Jobs, RemoteOK, Indeed
+├── db/
+│   ├── db_loader.py                  # SQLite schema, insert logic, stats, cleanup
+│   └── schema.sql                    # Database schema definition
+├── utils/
+│   ├── filters.py                    # Filtering logic, DB updates, export routines
+│   └── logger.py                     # Centralized logging setup
+├── data/
+│   └── h1bcompanies_list.csv         # List of 21k+ visa-friendly companies
+├── README.md
+└── requirements.txt
+
 ```
 
 ---
