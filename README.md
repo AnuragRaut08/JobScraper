@@ -30,7 +30,7 @@ jobscraper/
 │   ├── filters.py                    # Filtering logic, DB updates, export routines
 │   └── logger.py                     # Centralized logging setup
 ├── data/
-│   └── h1bcompanies_list.csv         # List of 21k+ visa-friendly companies
+│   └── h1bcompanies_list.csv         # List of 21k+ visa-friendly companies 
 ├── README.md
 └── requirements.txt
 
