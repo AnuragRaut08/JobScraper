@@ -1,6 +1,6 @@
 # JobScraper
 
-> An automated, end‑to‑end pipeline that scrapes/ingests fresh *Data‑Engineer‑centric* job postings every hour, filters them for **H‑1B‑friendly U.S. companies**, deduplicates & loads them into SQLite database, and exports handy CSV/JSON/HTML reports – all with a single command.
+> An automated, end‑to‑end pipeline that scrapes/ingests fresh *Data‑Engineer‑centric* job postings every hour, filters them for **H‑1B friendly U.S. companies**, deduplicates & loads them into SQLite database, and exports handy CSV/JSON/HTML reports – all with a single command.
 
 ---
 
