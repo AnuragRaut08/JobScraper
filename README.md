@@ -153,4 +153,5 @@ CREATE TABLE jobs (
 
 ## 📄 License
 
-MIT © 2025 Anurag [anuragtraut2003@gmail.com](mailto:anuragtraut2003@gmail.com)
+MIT © 2025 
+Connect:Anurag [anuragtraut2003@gmail.com](mailto:anuragtraut2003@gmail.com)
