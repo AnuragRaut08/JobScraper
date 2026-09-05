@@ -123,7 +123,7 @@ class JobScraper:
         # Add delay between API calls
         time.sleep(random.uniform(2, 4))
         
-        # Scrape USAJobs
+        # Scrape USA jobs
         usajobs_jobs = self.scrape_usajobs()
         all_jobs.extend(usajobs_jobs)
         
