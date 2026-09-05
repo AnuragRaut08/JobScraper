@@ -46,7 +46,7 @@ class EnhancedJobScraper:
         return session
     
     def setup_selenium_driver(self, headless=True):
-        """Setup Selenium WebDriver with stealth options"""
+        """Setup Selenium WebDriver with the  stealth options"""
         try:
             chrome_options = Options()
             
